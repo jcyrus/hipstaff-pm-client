@@ -10,11 +10,13 @@ type TableProps = {
   setIsModalNewTaskOpen: (isOpen: boolean) => void;
 };
 
+const dateFormatter = new Intl.DateTimeFormat("en-GB");
+
 const columns: GridColDef[] = [
   {
     field: "title",
     headerName: "Title",
-    width: 100,
+    width: 130,
   },
   {
     field: "description",
@@ -44,12 +46,14 @@ const columns: GridColDef[] = [
   {
     field: "startDate",
     headerName: "Start Date",
-    width: 130,
+    width: 100,
+    valueFormatter: (params) => dateFormatter.format(params.value?.date),
   },
   {
     field: "dueDate",
     headerName: "Due Date",
-    width: 130,
+    width: 100,
+    valueFormatter: (params) => dateFormatter.format(params.value?.date),
   },
   {
     field: "author",

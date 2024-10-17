@@ -13,7 +13,7 @@ const TaskCard = ({ task }: Props) => {
 
   return (
     <div 
-      className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      className="max-w-md bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       {task.attachments && task.attachments.length > 0 && (
         <Image
           src={`/${task.attachments[0].fileURL}`}
@@ -26,7 +26,6 @@ const TaskCard = ({ task }: Props) => {
       <div className="p-5">
         <div className="flex items-start justify-between mb-3">
           <div className="flex flex-1 flex-wrap items-center gap-2">
-
             <div className="flex gap-2">
               {taskTagsSplit.map((tag) => (
                 <div
@@ -47,10 +46,6 @@ const TaskCard = ({ task }: Props) => {
         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
           {task.description || "No description provided"}
         </p>
-
-
-
-
         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
           <strong>Status:</strong> {task.status}
         </p>
