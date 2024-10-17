@@ -8,35 +8,54 @@ type Props = {
 };
 
 const TaskCard = ({ task }: Props) => {
+
+  const taskTagsSplit = task.tags ? task.tags.split(",") : [];
+
   return (
     <div 
-      className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+      className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       {task.attachments && task.attachments.length > 0 && (
         <Image
           src={`/${task.attachments[0].fileURL}`}
           alt={task.attachments[0].fileName}
           width={400}
           height={400}
-          className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
+          className="rounded-t-lg"
         />
       )}
-      <div className="flex flex-col justify-between p-4 leading-normal">
-        <h5 className="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">{task.title}</h5>
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          <strong>ID:</strong> {task.id}
+      <div className="p-5">
+        <div className="flex items-start justify-between mb-3">
+          <div className="flex flex-1 flex-wrap items-center gap-2">
+
+            <div className="flex gap-2">
+              {taskTagsSplit.map((tag) => (
+                <div
+                  key={tag}
+                  className="rounded-full bg-blue-100 px-2 py-1 text-xs"
+                >
+                  {" "}
+                  {tag}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <p className="text-xs text-gray-600 flex items-center">
+          TASK ID: {task.id}
         </p>
+        <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{task.title}</h5>
         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          <strong>Description:</strong>{" "}
           {task.description || "No description provided"}
         </p>
+
+
+
+
         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
           <strong>Status:</strong> {task.status}
         </p>
         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
           <strong>Priority:</strong> {task.priority}
-        </p>
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          <strong>Tags:</strong> {task.tags || "No tags"}
         </p>
         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
           <strong>Start Date:</strong>{" "}
