@@ -1,7 +1,11 @@
 "use client"
 
-import React from 'react'
-import ProjectHeader from "@/app/projects/ProjectHeader"
+import React, { useState } from 'react';
+import ProjectHeader from "@/app/projects/ProjectHeader";
+import Board from "../BoardView";
+import List from "../ListView";
+import Timeline from "../TimelineView";
+import TableView from "../TableView";
 
 type Props = {
   params: { id: string };
@@ -15,7 +19,19 @@ const [isModalNewTaskOpen, setIsModalNewTaskOpen] = useState(false);
 return (
   <div>
     {/* New Task modal */}
-    {/* <ProjectHeader activeTab={activeTab} setActiveTab={setActiveTab} /> */}
+    <ProjectHeader activeTab={activeTab} setActiveTab={setActiveTab} />
+    { activeTab === "Board" && (
+      <Board id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen} />
+    )}
+    { activeTab === "List" && (
+      <List id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen} />
+    )}
+    { activeTab === "Timeline" && (
+      <Timeline id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen} />
+    )}
+    { activeTab === "Table" && (
+      <TableView id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen} />
+    )}
   </div>
 )
 }

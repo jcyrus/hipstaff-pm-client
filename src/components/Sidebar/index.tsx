@@ -46,18 +46,18 @@ const Sidebar = () => {
         {/* Top logo */}
         <div className="z-50 flex min-h-[56px] w-64 items-center justify-between bg-white px-6 pt-3 dark:bg-black">
           <div className="text-xl font-bold text-gray-800 dark:text-white">
-            HipStaff 
+            HipStaff
           </div>
           {isSidebarCollapsed ? null : (
-            <button 
-              className="py-3" 
+            <button
+              className="py-3"
               onClick={() => {
                 dispatch(setIsSidebarCollapsed(!isSidebarCollapsed));
               }}
-              >
-                <X className="h-6 w-6 text-gray-800 hover:text-gray-500 dark:text-white" />
-              </button>
-             )}
+            >
+              <X className="h-6 w-6 text-gray-800 hover:text-gray-500 dark:text-white" />
+            </button>
+          )}
         </div>
         {/* Team */}
         <div className="flex items-center gap-5 border-y-[1.5px] border-gray-200 px-8 py-4 dark:border-gray-700">
